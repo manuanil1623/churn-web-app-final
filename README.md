@@ -1,2 +1,37 @@
-# churn-web-app-final
-This project predicts customer churn in a telecom company using a Random Forest Classifier on a dataset of 7,043 customers. After data preprocessing, the model achieved 80–85% accuracy, supported by visualizations such as churn distribution and feature importance charts.
+# 🎯 Customer Churn Dashboard
+
+Predict and analyze customer churn
+using any dataset format!
+
+## 🌐 Live Demo
+
+
+## 📊 Features
+- ✅ Upload CSV/XLS/XLSX
+- ✅ Works with any columns
+- ✅ Auto detects churn column
+- ✅ 6 interactive charts
+- ✅ Deep analytics page
+- ✅ Data preview table
+- ✅ Mobile responsive
+- ✅ Download dashboard images
+
+## 🛠️ Tech Used
+- HTML, CSS, JavaScript
+- Chart.js
+- SheetJS (Excel)
+- PapaParse (CSV)
+
+## 📁 Structure
+customer-churn-dashboard/
+├── index.html
+├── analytics.html
+├── style.css
+├── script.js
+├── assets/
+│   ├── churn-chart.png
+│   └── dashboard-image.png
+└── README.md
+
+## 👤 Author
+manu

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0">
+    <title>Analytics - Churn Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            🎯 Churn Predictor
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="analytics.html"
+               class="active">Analytics</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>📊 Deep Analytics</h1>
+            <p>Detailed insights from
+               your dataset</p>
+        </div>
+
+        <div class="upload-card">
+            <div class="upload-icon">📂</div>
+            <h2>Upload Dataset for Analysis</h2>
+            <div class="badges">
+                <span class="badge csv">
+                    ✅ CSV</span>
+                <span class="badge xls">
+                    ✅ XLS</span>
+                <span class="badge xlsx">
+                    ✅ XLSX</span>
+            </div>
+            <div class="upload-area"
+                 onclick="document.getElementById('fileInput2').click()">
+                <div class="upload-emoji">📁</div>
+                <p class="upload-text">
+                    Click to Choose File</p>
+                <p class="upload-hint">
+                    CSV, XLS, XLSX supported</p>
+                <input type="file"
+                       id="fileInput2"
+                       accept=".csv,.xls,.xlsx"
+                       style="display:none"
+                       onchange="handleFileAnalytics(this)">
+                <p class="file-name"
+                   id="fileName2">
+                   No file chosen</p>
+            </div>
+            <button class="btn"
+                    onclick="runAnalytics()">
+                🔬 Run Deep Analysis
+            </button>
+        </div>
+
+        <div id="error-box2"
+             class="error-box"
+             style="display:none"></div>
+
+        <div id="loading2"
+             class="loading"
+             style="display:none">
+            <div class="spinner"></div>
+            <p>Running deep analysis...</p>
+        </div>
+
+        <div id="analytics-results"
+             style="display:none">
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>🔢 Confusion Matrix</h3>
+                    <canvas id="confMatrix">
+                    </canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>📉 Churn by Category</h3>
+                    <canvas id="categoryChart">
+                    </canvas>
+                </div>
+            </div>
+
+            <div class="chart-full">
+                <h3>🔑 Top Column Analysis</h3>
+                <canvas id="columnChart"
+                        height="100"></canvas>
+            </div>
+
+            <div class="chart-full">
+                <h3>📊 Data Distribution</h3>
+                <canvas id="distributionChart"
+                        height="100"></canvas>
+            </div>
+
+            <div class="table-card">
+                <h3>📋 Data Preview
+                    (First 10 Rows)</h3>
+                <div class="table-wrapper"
+                     id="dataTable"></div>
+            </div>
+
+            <div class="summary-card">
+                <h3>📝 Analysis Summary</h3>
+                <div id="analysisSummary">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        Built with ❤️ |
+        CodTech Data Analytics Internship
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

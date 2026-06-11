@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0">
+    <title>Customer Churn Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            🎯 Churn Predictor
+        </div>
+        <div class="nav-links">
+            <a href="index.html"
+               class="active">Dashboard</a>
+            <a href="analytics.html">
+               Analytics</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Customer Churn Prediction</h1>
+            <p>Upload your dataset and get
+               instant AI-powered insights</p>
+        </div>
+
+        <!-- Download Images Button -->
+        <div style="text-align:center;
+                    margin-bottom:20px;">
+            <button class="btn-small"
+                    onclick="saveImages()">
+                📥 Generate & Download
+                Dashboard Images
+            </button>
+        </div>
+
+        <div class="upload-card">
+            <div class="upload-icon">📂</div>
+            <h2>Upload Dataset</h2>
+            <div class="badges">
+                <span class="badge csv">
+                    ✅ CSV</span>
+                <span class="badge xls">
+                    ✅ XLS</span>
+                <span class="badge xlsx">
+                    ✅ XLSX</span>
+            </div>
+            <div class="upload-area"
+                 onclick="document.getElementById('fileInput').click()">
+                <div class="upload-emoji">📁</div>
+                <p class="upload-text">
+                    Click to Choose File</p>
+                <p class="upload-hint">
+                    Any format, any columns!</p>
+                <input type="file"
+                       id="fileInput"
+                       accept=".csv,.xls,.xlsx"
+                       style="display:none"
+                       onchange="handleFile(this)">
+                <p class="file-name"
+                   id="fileName">
+                   No file chosen</p>
+            </div>
+            <button class="btn"
+                    onclick="analyzeData()">
+                🔍 Analyze & Predict
+            </button>
+        </div>
+
+        <div id="error-box"
+             class="error-box"
+             style="display:none"></div>
+
+        <div id="loading"
+             class="loading"
+             style="display:none">
+            <div class="spinner"></div>
+            <p>Analyzing your data...</p>
+        </div>
+
+        <div id="results"
+             style="display:none">
+
+            <div class="file-info"
+                 id="fileInfo"></div>
+
+            <div class="stats-grid">
+                <div class="stat-card blue">
+                    <div class="number"
+                         id="totalCustomers">
+                         0</div>
+                    <div class="label">
+                        Total Customers</div>
+                </div>
+                <div class="stat-card red">
+                    <div class="number"
+                         id="churnedCount">
+                         0</div>
+                    <div class="label">
+                        Churned</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="number"
+                         id="retainedCount">
+                         0</div>
+                    <div class="label">
+                        Retained</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="number"
+                         id="churnRate">
+                         0%</div>
+                    <div class="label">
+                        Churn Rate</div>
+                </div>
+            </div>
+
+            <div class="accuracy-bar">
+                <div>
+                    <h3>📊 Data Quality Score</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                             id="qualityBar">
+                        </div>
+                    </div>
+                </div>
+                <div class="acc-number"
+                     id="qualityScore">0%</div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>📊 Churn Distribution</h3>
+                    <canvas id="churnBar">
+                    </canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>🥧 Churn Percentage</h3>
+                    <canvas id="churnPie">
+                    </canvas>
+                </div>
+            </div>
+
+            <div class="chart-full">
+                <h3>📈 Customer Overview</h3>
+                <canvas id="overviewChart"
+                        height="100"></canvas>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📋 Dataset Info</h3>
+                    <div id="datasetInfo"></div>
+                </div>
+                <div class="info-card">
+                    <h3>🔍 Key Findings</h3>
+                    <div id="keyFindings"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        Built with ❤️ |
+        CodTech Data Analytics Internship
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
